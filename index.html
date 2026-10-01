@@ -1,151 +1,400 @@
 <!DOCTYPE html>
-<html lang="el" class="dark">
+<html lang="el">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Astra Terminal | Markets & Gaming Intelligence</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        darkBg: '#09090b',
-                        cardBg: '#121215',
-                        borderBg: '#27272a',
-                        accentViolet: '#8b5cf6',
-                    }
-                }
-            }
-        }
-    </script>
-    <!-- Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Astra Terminal v2.1 PRO</title>
     <style>
-        body { font-family: 'Inter', sans-serif; }
+        :root {
+            --bg-color: #07090e;
+            --card-bg: #0e131f;
+            --border-color: #1e2638;
+            --accent-green: #00ffcc;
+            --accent-cyan: #00bfff;
+            --text-main: #f0f4f8;
+            --text-muted: #8b9bb4;
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Inter, -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            padding: 20px;
+            min-height: 100vh;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 15px;
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            background-color: var(--accent-green);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--accent-green);
+        }
+        h1 {
+            font-size: 1.4rem;
+            letter-spacing: 1.5px;
+            font-weight: 700;
+        }
+        .badge {
+            background: rgba(0, 255, 204, 0.1);
+            color: var(--accent-green);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border: 1px solid rgba(0, 255, 204, 0.3);
+        }
+        .user-tag {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border: 1px solid var(--border-color);
+            padding: 6px 12px;
+            border-radius: 6px;
+            background: var(--card-bg);
+        }
+        .section-title {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin: 25px 0 15px 0;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 18px;
+            height: 480px;
+            display: flex;
+            flex-direction: column;
+            transition: border-color 0.2s;
+        }
+        .card:hover {
+            border-color: rgba(0, 255, 204, 0.4);
+        }
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        .card-title {
+            font-size: 1.05rem;
+            font-weight: 600;
+        }
+        .card-subtitle {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+        .widget-box {
+            flex: 1;
+            width: 100%;
+            background: #05070a;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        /* Intelligence Hub Grid */
+        .hub-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .hub-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 20px;
+            min-height: 220px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .countdown-timer {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin: 15px 0;
+        }
+        .time-block {
+            background: #05070a;
+            border: 1px solid var(--border-color);
+            padding: 10px 14px;
+            border-radius: 6px;
+            text-align: center;
+            min-width: 60px;
+        }
+        .time-num {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--accent-green);
+        }
+        .time-label {
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .quick-btn {
+            background: #05070a;
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 10px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            text-align: center;
+            transition: all 0.2s;
+        }
+        .quick-btn:hover {
+            border-color: var(--accent-green);
+            color: var(--accent-green);
+            background: rgba(0, 255, 204, 0.05);
+        }
     </style>
 </head>
-<body class="bg-darkBg text-zinc-100 min-h-screen pb-12">
+<body>
 
-    <!-- TOP NAVIGATION BAR -->
-    <header class="border-b border-borderBg bg-black/50 backdrop-blur-md sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-            <div class="flex items-center gap-3">
-                <div class="w-3 h-3 rounded-full bg-emerald-500 animate-pulse"></div>
-                <span class="font-bold tracking-wider text-lg uppercase text-white">Astra <span class="text-accentViolet">Terminal</span></span>
-                <span class="hidden md:inline-block text-xs bg-zinc-800 text-zinc-400 px-2 py-0.5 rounded border border-zinc-700 font-mono">v1.0 Live</span>
-            </div>
-            <div class="flex items-center gap-4">
-                <!-- X / TWITTER DIRECT LINK -->
-                <a href="https://x.com/AstraN9ne99" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 bg-accentViolet/10 hover:bg-accentViolet/20 text-accentViolet border border-accentViolet/30 px-4 py-1.5 rounded-lg text-xs font-semibold transition">
-                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-                    <span>Follow @AstraN9ne99</span>
-                </a>
-            </div>
+    <header>
+        <div class="logo-area">
+            <div class="status-dot"></div>
+            <h1>ASTRA TERMINAL</h1>
+            <span class="badge">v2.1 PRO</span>
         </div>
+        <div class="user-tag">@AstraN9ne99</div>
     </header>
 
-    <!-- MAIN CONTAINER -->
-    <main class="max-w-7xl mx-auto px-6 pt-8 space-y-8">
-
-        <!-- FINANCIAL MARKETS DESK -->
-        <section>
-            <h2 class="text-xs uppercase font-semibold tracking-widest text-zinc-400 mb-4 flex items-center gap-2">
-                <span class="w-2 h-2 rounded-full bg-accentViolet"></span> Financial Intelligence
-            </h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                
-                <!-- CARD: VUAA -->
-                <div class="bg-cardBg border border-borderBg rounded-xl p-5 hover:border-zinc-700 transition">
-                    <div class="flex justify-between items-start mb-2">
-                        <div>
-                            <span class="text-xs text-zinc-500 font-mono">ETF / S&P 500</span>
-                            <h3 class="text-lg font-bold text-white">VUAA</h3>
-                        </div>
-                        <span class="text-xs bg-emerald-500/10 text-emerald-400 px-2 py-1 rounded border border-emerald-500/20 font-mono">+0.45%</span>
-                    </div>
-                    <div class="text-2xl font-bold font-mono text-white mb-1">$102.40</div>
-                    <p class="text-xs text-zinc-500">Vanguard S&P 500 UCITS</p>
+    <!-- FINANCIAL MARKETS & CRYPTO -->
+    <div class="section-title">/// FINANCIAL MARKETS & CRYPTO (REAL-TIME)</div>
+    <div class="grid-container">
+        <!-- S&P 500 (VUAA) -->
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <div class="card-title">VUAA (S&P 500)</div>
+                    <div class="card-subtitle">Vanguard S&P 500 UCITS ETF</div>
                 </div>
-
-                <!-- CARD: EQQQ -->
-                <div class="bg-cardBg border border-borderBg rounded-xl p-5 hover:border-zinc-700 transition">
-                    <div class="flex justify-between items-start mb-2">
-                        <div>
-                            <span class="text-xs text-zinc-500 font-mono">ETF / NASDAQ-100</span>
-                            <h3 class="text-lg font-bold text-white">EQQQ</h3>
-                        </div>
-                        <span class="text-xs bg-emerald-500/10 text-emerald-400 px-2 py-1 rounded border border-emerald-500/20 font-mono">+0.82%</span>
-                    </div>
-                    <div class="text-2xl font-bold font-mono text-white mb-1">$485.10</div>
-                    <p class="text-xs text-zinc-500">Invesco NASDAQ-100 UCITS</p>
-                </div>
-
-                <!-- CARD: SOLANA -->
-                <div class="bg-cardBg border border-borderBg rounded-xl p-5 hover:border-zinc-700 transition">
-                    <div class="flex justify-between items-start mb-2">
-                        <div>
-                            <span class="text-xs text-zinc-500 font-mono">CRYPTO</span>
-                            <h3 class="text-lg font-bold text-white">SOL (Solana)</h3>
-                        </div>
-                        <span class="text-xs bg-emerald-500/10 text-emerald-400 px-2 py-1 rounded border border-emerald-500/20 font-mono">+3.15%</span>
-                    </div>
-                    <div class="text-2xl font-bold font-mono text-white mb-1">$142.80</div>
-                    <p class="text-xs text-zinc-500">Live Kraken Data</p>
-                </div>
-
             </div>
-        </section>
-
-        <!-- GAMING & TECH SCENE -->
-        <section>
-            <h2 class="text-xs uppercase font-semibold tracking-widest text-zinc-400 mb-4 flex items-center gap-2">
-                <span class="w-2 h-2 rounded-full bg-indigo-500"></span> Gaming & Tech Intelligence
-            </h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-
-                <!-- CARD: GTA VI & V -->
-                <div class="bg-cardBg border border-borderBg rounded-xl p-6">
-                    <div class="flex items-center justify-between mb-4">
-                        <h3 class="font-bold text-lg text-white">Grand Theft Auto Hub</h3>
-                        <span class="text-xs bg-indigo-500/10 text-indigo-400 px-2.5 py-1 rounded-full border border-indigo-500/20">Rockstar Intel</span>
-                    </div>
-                    <div class="space-y-3 text-sm">
-                        <div class="p-3 bg-zinc-900/80 rounded-lg border border-zinc-800 flex justify-between items-center">
-                            <span class="text-zinc-300">GTA VI Release Window</span>
-                            <span class="font-mono text-xs text-emerald-400 font-bold">Fall 2025</span>
-                        </div>
-                        <div class="p-3 bg-zinc-900/80 rounded-lg border border-zinc-800 flex justify-between items-center">
-                            <span class="text-zinc-300">GTA Online Status</span>
-                            <span class="font-mono text-xs text-zinc-400">Weekly Refresh Active</span>
-                        </div>
-                    </div>
+            <div class="widget-box">
+                <div class="tradingview-widget-container" style="height:100%;width:100%">
+                    <div class="tradingview-widget-container__widget" style="height:100%;width:100%"></div>
+                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
+                    {
+                        "autosize": true,
+                        "symbol": "SPX",
+                        "interval": "D",
+                        "timezone": "Etc/UTC",
+                        "theme": "dark",
+                        "style": "1",
+                        "locale": "el",
+                        "allow_symbol_change": true,
+                        "calendar": false,
+                        "support_host": "https://www.tradingview.com"
+                    }
+                    </script>
                 </div>
-
-                <!-- CARD: PS5 SCENE -->
-                <div class="bg-cardBg border border-borderBg rounded-xl p-6">
-                    <div class="flex items-center justify-between mb-4">
-                        <h3 class="font-bold text-lg text-white">PS5 Scene & Jailbreak Tracker</h3>
-                        <span class="text-xs bg-purple-500/10 text-purple-400 px-2.5 py-1 rounded-full border border-purple-500/20">Scene Status</span>
-                    </div>
-                    <div class="space-y-3 text-sm">
-                        <div class="p-3 bg-zinc-900/80 rounded-lg border border-zinc-800 flex justify-between items-center">
-                            <span class="text-zinc-300">Vulnerable Firmware Range</span>
-                            <span class="font-mono text-xs text-amber-400 font-bold">FW 4.51 & Lower</span>
-                        </div>
-                        <div class="p-3 bg-zinc-900/80 rounded-lg border border-zinc-800 flex justify-between items-center">
-                            <span class="text-zinc-300">Exploit Compatibility</span>
-                            <span class="font-mono text-xs text-zinc-400">Webkit / Kernel Entry</span>
-                        </div>
-                    </div>
-                </div>
-
             </div>
-        </section>
+        </div>
 
-    </main>
+        <!-- NASDAQ 100 (EQQQ) -->
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <div class="card-title">EQQQ (NASDAQ-100)</div>
+                    <div class="card-subtitle">Invesco NASDAQ-100 UCITS ETF</div>
+                </div>
+            </div>
+            <div class="widget-box">
+                <div class="tradingview-widget-container" style="height:100%;width:100%">
+                    <div class="tradingview-widget-container__widget" style="height:100%;width:100%"></div>
+                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
+                    {
+                        "autosize": true,
+                        "symbol": "NDX",
+                        "interval": "D",
+                        "timezone": "Etc/UTC",
+                        "theme": "dark",
+                        "style": "1",
+                        "locale": "el",
+                        "allow_symbol_change": true,
+                        "calendar": false,
+                        "support_host": "https://www.tradingview.com"
+                    }
+                    </script>
+                </div>
+            </div>
+        </div>
 
+        <!-- SOL / USD -->
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <div class="card-title">SOL / USD</div>
+                    <div class="card-subtitle">Solana Crypto Live Tick</div>
+                </div>
+            </div>
+            <div class="widget-box">
+                <div class="tradingview-widget-container" style="height:100%;width:100%">
+                    <div class="tradingview-widget-container__widget" style="height:100%;width:100%"></div>
+                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
+                    {
+                        "autosize": true,
+                        "symbol": "BINANCE:SOLUSDT",
+                        "interval": "60",
+                        "timezone": "Etc/UTC",
+                        "theme": "dark",
+                        "style": "1",
+                        "locale": "el",
+                        "allow_symbol_change": true,
+                        "calendar": false,
+                        "support_host": "https://www.tradingview.com"
+                    }
+                    </script>
+                </div>
+            </div>
+        </div>
+
+        <!-- BTC / USD -->
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <div class="card-title">BTC / USD</div>
+                    <div class="card-subtitle">Bitcoin Real-time</div>
+                </div>
+            </div>
+            <div class="widget-box">
+                <div class="tradingview-widget-container" style="height:100%;width:100%">
+                    <div class="tradingview-widget-container__widget" style="height:100%;width:100%"></div>
+                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
+                    {
+                        "autosize": true,
+                        "symbol": "BINANCE:BTCUSDT",
+                        "interval": "60",
+                        "timezone": "Etc/UTC",
+                        "theme": "dark",
+                        "style": "1",
+                        "locale": "el",
+                        "allow_symbol_change": true,
+                        "calendar": false,
+                        "support_host": "https://www.tradingview.com"
+                    }
+                    </script>
+                </div>
+            </div>
+        </div>
+
+        <!-- ETH / USD -->
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <div class="card-title">ETH / USD</div>
+                    <div class="card-subtitle">Ethereum Real-time</div>
+                </div>
+            </div>
+            <div class="widget-box">
+                <div class="tradingview-widget-container" style="height:100%;width:100%">
+                    <div class="tradingview-widget-container__widget" style="height:100%;width:100%"></div>
+                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
+                    {
+                        "autosize": true,
+                        "symbol": "BINANCE:ETHUSDT",
+                        "interval": "60",
+                        "timezone": "Etc/UTC",
+                        "theme": "dark",
+                        "style": "1",
+                        "locale": "el",
+                        "allow_symbol_change": true,
+                        "calendar": false,
+                        "support_host": "https://www.tradingview.com"
+                    }
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- INTELLIGENCE HUB (DYNAMIC & INTERACTIVE) -->
+    <div class="section-title">/// INTELLIGENCE HUB & LIVE UTILITIES</div>
+    <div class="hub-grid">
+        <!-- GTA VI Countdown -->
+        <div class="hub-card">
+            <div>
+                <div class="card-title">GTA VI Launch Countdown</div>
+                <div class="card-subtitle">Target: November 19, 2026</div>
+            </div>
+            <div class="countdown-timer" id="gta-countdown">
+                <div class="time-block"><div class="time-num" id="days">--</div><div class="time-label">Ημέρες</div></div>
+                <div class="time-block"><div class="time-num" id="hours">--</div><div class="time-label">Ώρες</div></div>
+                <div class="time-block"><div class="time-num" id="mins">--</div><div class="time-label">Λεπτά</div></div>
+                <div class="time-block"><div class="time-num" id="secs">--</div><div class="time-label">Δευτ.</div></div>
+            </div>
+            <a href="https://www.rockstargames.com" target="_blank" class="quick-btn">Rockstar Official ↗</a>
+        </div>
+
+        <!-- Quick Action Hub Links -->
+        <div class="hub-card">
+            <div>
+                <div class="card-title">Quick Command Links</div>
+                <div class="card-subtitle">Direct access to daily platforms</div>
+            </div>
+            <div class="links-grid">
+                <a href="https://trading212.com" target="_blank" class="quick-btn">Trading 212</a>
+                <a href="https://pro.kraken.com" target="_blank" class="quick-btn">Kraken Pro</a>
+                <a href="https://x.com/AstraN9ne99" target="_blank" class="quick-btn">X / Twitter</a>
+                <a href="https://github.com" target="_blank" class="quick-btn">GitHub Hub</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Live GTA VI Countdown Script (Target: Nov 19, 2026 00:00:00)
+        const targetDate = new Date("November 19, 2026 00:00:00").getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            if (distance > 0) {
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.getElementById("days").innerText = days;
+                document.getElementById("hours").innerText = String(hours).padStart(2, '0');
+                document.getElementById("mins").innerText = String(minutes).padStart(2, '0');
+                document.getElementById("secs").innerText = String(seconds).padStart(2, '0');
+            }
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
 </body>
-</html>s
+</html>
