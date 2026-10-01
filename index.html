@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Astra Terminal v2.1 PRO</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2240%22 fill=%22%2300ffcc%22/></svg>">
     <style>
         :root {
             --bg-color: #07090e;
@@ -11,6 +12,7 @@
             --border-color: #1e2638;
             --accent-green: #00ffcc;
             --accent-cyan: #00bfff;
+            --accent-pink: #ff007f;
             --text-main: #f0f4f8;
             --text-muted: #8b9bb4;
         }
@@ -120,6 +122,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 20px;
+            margin-bottom: 25px;
         }
         .hub-card {
             background-color: var(--card-bg);
@@ -130,6 +133,11 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+        }
+        /* GTA VI Card - Original clean style */
+        .gta-card {
+            background: linear-gradient(135deg, #0e131f 0%, #151b2b 100%) !important;
+            border: 1px solid var(--border-color) !important;
         }
         .countdown-timer {
             display: flex;
@@ -155,12 +163,6 @@
             color: var(--text-muted);
             text-transform: uppercase;
         }
-        .links-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            margin-top: 10px;
-        }
         .quick-btn {
             background: #05070a;
             border: 1px solid var(--border-color);
@@ -171,11 +173,72 @@
             font-size: 0.85rem;
             text-align: center;
             transition: all 0.2s;
+            display: block;
         }
         .quick-btn:hover {
             border-color: var(--accent-green);
             color: var(--accent-green);
             background: rgba(0, 255, 204, 0.05);
+        }
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        /* X (TWITTER) GROWTH BANNER */
+        .x-promo-banner {
+            background: linear-gradient(135deg, #0e131f 0%, #121929 100%);
+            border: 1px solid rgba(0, 255, 204, 0.3);
+            border-radius: 10px;
+            padding: 20px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+        .x-promo-content h3 {
+            font-size: 1.05rem;
+            color: var(--text-main);
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .x-promo-content p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+        .x-follow-btn {
+            background: var(--text-main);
+            color: var(--bg-color);
+            padding: 10px 22px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+        .x-follow-btn:hover {
+            background: var(--accent-green);
+            box-shadow: 0 0 12px rgba(0, 255, 204, 0.5);
+        }
+
+        @media (max-width: 600px) {
+            .x-promo-banner {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .x-follow-btn {
+                width: 100%;
+                justify-content: center;
+            }
         }
     </style>
 </head>
@@ -190,15 +253,15 @@
         <div class="user-tag">@AstraN9ne99</div>
     </header>
 
-    <!-- FINANCIAL MARKETS & CRYPTO -->
-    <div class="section-title">/// FINANCIAL MARKETS & CRYPTO (REAL-TIME)</div>
+    <!-- CRYPTO MARKETS -->
+    <div class="section-title">/// CRYPTO MARKETS (REAL-TIME)</div>
     <div class="grid-container">
-        <!-- S&P 500 (VUAA) -->
+        <!-- BTC / USD -->
         <div class="card">
             <div class="card-header">
                 <div>
-                    <div class="card-title">VUAA (S&P 500)</div>
-                    <div class="card-subtitle">Vanguard S&P 500 UCITS ETF</div>
+                    <div class="card-title">BTC / USD</div>
+                    <div class="card-subtitle">Bitcoin Real-time</div>
                 </div>
             </div>
             <div class="widget-box">
@@ -207,37 +270,8 @@
                     <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
                     {
                         "autosize": true,
-                        "symbol": "SPX",
-                        "interval": "D",
-                        "timezone": "Etc/UTC",
-                        "theme": "dark",
-                        "style": "1",
-                        "locale": "el",
-                        "allow_symbol_change": true,
-                        "calendar": false,
-                        "support_host": "https://www.tradingview.com"
-                    }
-                    </script>
-                </div>
-            </div>
-        </div>
-
-        <!-- NASDAQ 100 (EQQQ) -->
-        <div class="card">
-            <div class="card-header">
-                <div>
-                    <div class="card-title">EQQQ (NASDAQ-100)</div>
-                    <div class="card-subtitle">Invesco NASDAQ-100 UCITS ETF</div>
-                </div>
-            </div>
-            <div class="widget-box">
-                <div class="tradingview-widget-container" style="height:100%;width:100%">
-                    <div class="tradingview-widget-container__widget" style="height:100%;width:100%"></div>
-                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
-                    {
-                        "autosize": true,
-                        "symbol": "NDX",
-                        "interval": "D",
+                        "symbol": "BINANCE:BTCUSDT",
+                        "interval": "60",
                         "timezone": "Etc/UTC",
                         "theme": "dark",
                         "style": "1",
@@ -266,35 +300,6 @@
                     {
                         "autosize": true,
                         "symbol": "BINANCE:SOLUSDT",
-                        "interval": "60",
-                        "timezone": "Etc/UTC",
-                        "theme": "dark",
-                        "style": "1",
-                        "locale": "el",
-                        "allow_symbol_change": true,
-                        "calendar": false,
-                        "support_host": "https://www.tradingview.com"
-                    }
-                    </script>
-                </div>
-            </div>
-        </div>
-
-        <!-- BTC / USD -->
-        <div class="card">
-            <div class="card-header">
-                <div>
-                    <div class="card-title">BTC / USD</div>
-                    <div class="card-subtitle">Bitcoin Real-time</div>
-                </div>
-            </div>
-            <div class="widget-box">
-                <div class="tradingview-widget-container" style="height:100%;width:100%">
-                    <div class="tradingview-widget-container__widget" style="height:100%;width:100%"></div>
-                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
-                    {
-                        "autosize": true,
-                        "symbol": "BINANCE:BTCUSDT",
                         "interval": "60",
                         "timezone": "Etc/UTC",
                         "theme": "dark",
@@ -339,14 +344,36 @@
         </div>
     </div>
 
-    <!-- INTELLIGENCE HUB (DYNAMIC & INTERACTIVE) -->
+    <!-- INTELLIGENCE HUB -->
     <div class="section-title">/// INTELLIGENCE HUB & LIVE UTILITIES</div>
     <div class="hub-grid">
-        <!-- GTA VI Countdown -->
+        <!-- GTA V JOB: FREE MK2 WEAPONS (PS5 Only) -->
         <div class="hub-card">
             <div>
-                <div class="card-title">GTA VI Launch Countdown</div>
-                <div class="card-subtitle">Target: November 19, 2026</div>
+                <div class="card-header" style="margin-bottom: 4px;">
+                    <div>
+                        <div class="card-title">GTA V: FREE MK2 WEAPONS</div>
+                        <div class="card-subtitle" style="color: var(--accent-green); font-weight: 600;">PS5 Only</div>
+                    </div>
+                </div>
+                <p style="font-size: 0.78rem; color: var(--text-muted); margin: 8px 0 15px 0; line-height: 1.4;">
+                    Grab special weapons & ammo in job, quit via phone, and keep everything in freemode session.
+                </p>
+            </div>
+            <a href="https://socialclub.rockstargames.com/job/gtav/g68ljFI7FkWp0S0PaTe3vA" target="_blank" class="quick-btn" style="border-color: rgba(0, 255, 204, 0.4); color: var(--accent-green);">
+                Bookmark Job (Social Club) ↗
+            </a>
+        </div>
+
+        <!-- GTA VI Countdown -->
+        <div class="hub-card gta-card">
+            <div>
+                <div class="card-header" style="margin-bottom: 4px;">
+                    <div>
+                        <div class="card-title">GTA VI Countdown</div>
+                        <div class="card-subtitle">Target Release</div>
+                    </div>
+                </div>
             </div>
             <div class="countdown-timer" id="gta-countdown">
                 <div class="time-block"><div class="time-num" id="days">--</div><div class="time-label">Ημέρες</div></div>
@@ -361,15 +388,28 @@
         <div class="hub-card">
             <div>
                 <div class="card-title">Quick Command Links</div>
-                <div class="card-subtitle">Direct access to daily platforms</div>
+                <div class="card-subtitle">Direct access to platforms</div>
             </div>
             <div class="links-grid">
                 <a href="https://trading212.com" target="_blank" class="quick-btn">Trading 212</a>
                 <a href="https://pro.kraken.com" target="_blank" class="quick-btn">Kraken Pro</a>
-                <a href="https://x.com/AstraN9ne99" target="_blank" class="quick-btn">X / Twitter</a>
-                <a href="https://github.com" target="_blank" class="quick-btn">GitHub Hub</a>
+                <a href="https://github.com" target="_blank" class="quick-btn">GitHub</a>
             </div>
         </div>
+    </div>
+
+    <!-- X (TWITTER) GROWTH BANNER -->
+    <div class="x-promo-banner">
+        <div class="x-promo-content">
+            <h3>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                Follow @AstraN9ne99 on X
+            </h3>
+            <p>Stay connected with the network.</p>
+        </div>
+        <a href="https://x.com/AstraN9ne99" target="_blank" class="x-follow-btn">
+            Follow @AstraN9ne99 ↗
+        </a>
     </div>
 
     <script>
