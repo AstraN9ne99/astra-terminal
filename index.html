@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="el" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Astra Terminal | Markets & Gaming Intelligence</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        darkBg: '#09090b',
+                        cardBg: '#121215',
+                        borderBg: '#27272a',
+                        accentViolet: '#8b5cf6',
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-darkBg text-zinc-100 min-h-screen pb-12">
+
+    <!-- TOP NAVIGATION BAR -->
+    <header class="border-b border-borderBg bg-black/50 backdrop-blur-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-3 h-3 rounded-full bg-emerald-500 animate-pulse"></div>
+                <span class="font-bold tracking-wider text-lg uppercase text-white">Astra <span class="text-accentViolet">Terminal</span></span>
+                <span class="hidden md:inline-block text-xs bg-zinc-800 text-zinc-400 px-2 py-0.5 rounded border border-zinc-700 font-mono">v1.0 Live</span>
+            </div>
+            <div class="flex items-center gap-4">
+                <!-- X / TWITTER DIRECT LINK -->
+                <a href="https://x.com/AstraN9ne99" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 bg-accentViolet/10 hover:bg-accentViolet/20 text-accentViolet border border-accentViolet/30 px-4 py-1.5 rounded-lg text-xs font-semibold transition">
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                    <span>Follow @AstraN9ne99</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTAINER -->
+    <main class="max-w-7xl mx-auto px-6 pt-8 space-y-8">
+
+        <!-- FINANCIAL MARKETS DESK -->
+        <section>
+            <h2 class="text-xs uppercase font-semibold tracking-widest text-zinc-400 mb-4 flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-accentViolet"></span> Financial Intelligence
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                
+                <!-- CARD: VUAA -->
+                <div class="bg-cardBg border border-borderBg rounded-xl p-5 hover:border-zinc-700 transition">
+                    <div class="flex justify-between items-start mb-2">
+                        <div>
+                            <span class="text-xs text-zinc-500 font-mono">ETF / S&P 500</span>
+                            <h3 class="text-lg font-bold text-white">VUAA</h3>
+                        </div>
+                        <span class="text-xs bg-emerald-500/10 text-emerald-400 px-2 py-1 rounded border border-emerald-500/20 font-mono">+0.45%</span>
+                    </div>
+                    <div class="text-2xl font-bold font-mono text-white mb-1">$102.40</div>
+                    <p class="text-xs text-zinc-500">Vanguard S&P 500 UCITS</p>
+                </div>
+
+                <!-- CARD: EQQQ -->
+                <div class="bg-cardBg border border-borderBg rounded-xl p-5 hover:border-zinc-700 transition">
+                    <div class="flex justify-between items-start mb-2">
+                        <div>
+                            <span class="text-xs text-zinc-500 font-mono">ETF / NASDAQ-100</span>
+                            <h3 class="text-lg font-bold text-white">EQQQ</h3>
+                        </div>
+                        <span class="text-xs bg-emerald-500/10 text-emerald-400 px-2 py-1 rounded border border-emerald-500/20 font-mono">+0.82%</span>
+                    </div>
+                    <div class="text-2xl font-bold font-mono text-white mb-1">$485.10</div>
+                    <p class="text-xs text-zinc-500">Invesco NASDAQ-100 UCITS</p>
+                </div>
+
+                <!-- CARD: SOLANA -->
+                <div class="bg-cardBg border border-borderBg rounded-xl p-5 hover:border-zinc-700 transition">
+                    <div class="flex justify-between items-start mb-2">
+                        <div>
+                            <span class="text-xs text-zinc-500 font-mono">CRYPTO</span>
+                            <h3 class="text-lg font-bold text-white">SOL (Solana)</h3>
+                        </div>
+                        <span class="text-xs bg-emerald-500/10 text-emerald-400 px-2 py-1 rounded border border-emerald-500/20 font-mono">+3.15%</span>
+                    </div>
+                    <div class="text-2xl font-bold font-mono text-white mb-1">$142.80</div>
+                    <p class="text-xs text-zinc-500">Live Kraken Data</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- GAMING & TECH SCENE -->
+        <section>
+            <h2 class="text-xs uppercase font-semibold tracking-widest text-zinc-400 mb-4 flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-indigo-500"></span> Gaming & Tech Intelligence
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                <!-- CARD: GTA VI & V -->
+                <div class="bg-cardBg border border-borderBg rounded-xl p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="font-bold text-lg text-white">Grand Theft Auto Hub</h3>
+                        <span class="text-xs bg-indigo-500/10 text-indigo-400 px-2.5 py-1 rounded-full border border-indigo-500/20">Rockstar Intel</span>
+                    </div>
+                    <div class="space-y-3 text-sm">
+                        <div class="p-3 bg-zinc-900/80 rounded-lg border border-zinc-800 flex justify-between items-center">
+                            <span class="text-zinc-300">GTA VI Release Window</span>
+                            <span class="font-mono text-xs text-emerald-400 font-bold">Fall 2025</span>
+                        </div>
+                        <div class="p-3 bg-zinc-900/80 rounded-lg border border-zinc-800 flex justify-between items-center">
+                            <span class="text-zinc-300">GTA Online Status</span>
+                            <span class="font-mono text-xs text-zinc-400">Weekly Refresh Active</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CARD: PS5 SCENE -->
+                <div class="bg-cardBg border border-borderBg rounded-xl p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="font-bold text-lg text-white">PS5 Scene & Jailbreak Tracker</h3>
+                        <span class="text-xs bg-purple-500/10 text-purple-400 px-2.5 py-1 rounded-full border border-purple-500/20">Scene Status</span>
+                    </div>
+                    <div class="space-y-3 text-sm">
+                        <div class="p-3 bg-zinc-900/80 rounded-lg border border-zinc-800 flex justify-between items-center">
+                            <span class="text-zinc-300">Vulnerable Firmware Range</span>
+                            <span class="font-mono text-xs text-amber-400 font-bold">FW 4.51 & Lower</span>
+                        </div>
+                        <div class="p-3 bg-zinc-900/80 rounded-lg border border-zinc-800 flex justify-between items-center">
+                            <span class="text-zinc-300">Exploit Compatibility</span>
+                            <span class="font-mono text-xs text-zinc-400">Webkit / Kernel Entry</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+</body>
+</html>s
