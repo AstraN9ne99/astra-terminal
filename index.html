@@ -6,16 +6,14 @@
     <title>Astra Terminal v2.1 PRO</title>
     <style>
         :root {
-            --bg-primary: #080b10;
-            --bg-card: #0d1117;
-            --bg-card-inner: #05070a;
-            --border-color: #1f293d;
-            --accent-green: #00ffcc;
-            --accent-red: #ff4757;
-            --accent-orange: #ffa500;
+            --bg-primary: #05070a;
+            --bg-card: #0b0f17;
+            --bg-card-inner: #030406;
+            --border-color: #1a2333;
+            --accent-cyan: #00ffcc;
             --text-main: #f0f6fc;
             --text-muted: #8b949e;
-            --font-mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace, sans-serif;
+            --font-mono: 'JetBrains Mono', 'Fira Code', monospace, sans-serif;
         }
 
         * {
@@ -29,7 +27,7 @@
             background-color: var(--bg-primary);
             color: var(--text-main);
             min-height: 100vh;
-            padding: 20px;
+            padding: 24px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -42,57 +40,50 @@
             justify-content: space-between;
             align-items: center;
             padding-bottom: 16px;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
             border-bottom: 1px solid var(--border-color);
         }
 
         .brand {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
         }
 
         .brand-title {
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             font-weight: 800;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
             color: #fff;
         }
 
         .status-badge {
-            background: rgba(0, 255, 204, 0.1);
-            border: 1px solid var(--accent-green);
-            color: var(--accent-green);
+            background: rgba(0, 255, 204, 0.08);
+            border: 1px solid var(--accent-cyan);
+            color: var(--accent-cyan);
             font-size: 0.7rem;
-            padding: 2px 8px;
+            padding: 3px 8px;
             border-radius: 4px;
+            letter-spacing: 0.5px;
         }
 
         .section-label {
             width: 100%;
             max-width: 1400px;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: var(--text-muted);
             margin-bottom: 12px;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
         }
 
-        .charts-grid {
+        .charts-grid, .hub-grid {
             width: 100%;
             max-width: 1400px;
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 16px;
-            margin-bottom: 24px;
-        }
-
-        .hub-grid {
-            width: 100%;
-            max-width: 1400px;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 16px;
-            margin-bottom: 24px;
+            margin-bottom: 28px;
         }
 
         @media (max-width: 1024px) {
@@ -111,69 +102,77 @@
             background-color: var(--bg-card);
             border: 1px solid var(--border-color);
             border-radius: 8px;
-            padding: 16px;
+            padding: 18px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            transition: border-color 0.2s ease;
+        }
+
+        .hub-card:hover {
+            border-color: rgba(0, 255, 204, 0.3);
         }
 
         .card-title {
             font-size: 0.95rem;
             font-weight: 700;
             color: #fff;
+            margin-bottom: 4px;
         }
 
         .card-subtitle {
             font-size: 0.75rem;
-            color: var(--accent-green);
-            margin-bottom: 8px;
+            color: var(--accent-cyan);
+            margin-bottom: 12px;
         }
 
         .btn-action {
             width: 100%;
             background: transparent;
             border: 1px solid var(--border-color);
-            color: var(--accent-green);
+            color: var(--accent-cyan);
             padding: 10px;
             border-radius: 6px;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             text-align: center;
             text-decoration: none;
             display: block;
-            transition: 0.2s;
+            transition: all 0.2s ease;
             cursor: pointer;
+            letter-spacing: 0.5px;
         }
 
         .btn-action:hover {
-            border-color: var(--accent-green);
+            border-color: var(--accent-cyan);
             background: rgba(0, 255, 204, 0.05);
         }
 
         .countdown-box {
             display: flex;
             justify-content: center;
-            gap: 10px;
-            margin: 15px 0;
+            gap: 8px;
+            margin: 12px 0;
         }
 
         .time-unit {
             background: var(--bg-card-inner);
             border: 1px solid var(--border-color);
-            padding: 10px;
+            padding: 8px;
             border-radius: 6px;
             text-align: center;
-            min-width: 50px;
+            min-width: 52px;
         }
 
         .time-value {
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             font-weight: bold;
-            color: var(--accent-green);
+            color: var(--accent-cyan);
         }
 
         .time-label {
-            font-size: 0.6rem;
+            font-size: 0.55rem;
             color: var(--text-muted);
+            letter-spacing: 1px;
         }
 
         .quick-links-grid {
@@ -210,14 +209,14 @@
     <!-- CRYPTO MARKETS SECTION -->
     <div class="section-label">/// CRYPTO MARKETS (REAL-TIME)</div>
     <main class="charts-grid">
-        <div class="hub-card" style="height: 320px; padding: 0; overflow: hidden;">
-            <iframe src="https://s.tradingview.com/widgetembed/?frameElementId=tradingview_btc&symbol=BINANCE%3ABTCUSDT&interval=60&hidesidetoolbar=1&symboledit=0&saveimage=0&toolbarbg=080b10&theme=dark&style=1&timezone=Etc%2FUTC" style="width: 100%; height: 100%; border: none;"></iframe>
+        <div class="hub-card" style="height: 300px; padding: 0; overflow: hidden;">
+            <iframe src="https://s.tradingview.com/widgetembed/?frameElementId=tradingview_btc&symbol=BINANCE%3ABTCUSDT&interval=60&hidesidetoolbar=1&symboledit=0&saveimage=0&toolbarbg=05070a&theme=dark&style=1&timezone=Etc%2FUTC" style="width: 100%; height: 100%; border: none;"></iframe>
         </div>
-        <div class="hub-card" style="height: 320px; padding: 0; overflow: hidden;">
-            <iframe src="https://s.tradingview.com/widgetembed/?frameElementId=tradingview_sol&symbol=BINANCE%3ASOLUSDT&interval=60&hidesidetoolbar=1&symboledit=0&saveimage=0&toolbarbg=080b10&theme=dark&style=1&timezone=Etc%2FUTC" style="width: 100%; height: 100%; border: none;"></iframe>
+        <div class="hub-card" style="height: 300px; padding: 0; overflow: hidden;">
+            <iframe src="https://s.tradingview.com/widgetembed/?frameElementId=tradingview_sol&symbol=BINANCE%3ASOLUSDT&interval=60&hidesidetoolbar=1&symboledit=0&saveimage=0&toolbarbg=05070a&theme=dark&style=1&timezone=Etc%2FUTC" style="width: 100%; height: 100%; border: none;"></iframe>
         </div>
-        <div class="hub-card" style="height: 320px; padding: 0; overflow: hidden;">
-            <iframe src="https://s.tradingview.com/widgetembed/?frameElementId=tradingview_eth&symbol=BINANCE%3AETHUSDT&interval=60&hidesidetoolbar=1&hidesidetoolbar=1&symboledit=0&saveimage=0&toolbarbg=080b10&theme=dark&style=1&timezone=Etc%2FUTC" style="width: 100%; height: 100%; border: none;"></iframe>
+        <div class="hub-card" style="height: 300px; padding: 0; overflow: hidden;">
+            <iframe src="https://s.tradingview.com/widgetembed/?frameElementId=tradingview_eth&symbol=BINANCE%3AETHUSDT&interval=60&hidesidetoolbar=1&hidesidetoolbar=1&symboledit=0&saveimage=0&toolbarbg=05070a&theme=dark&style=1&timezone=Etc%2FUTC" style="width: 100%; height: 100%; border: none;"></iframe>
         </div>
     </main>
 
@@ -230,7 +229,7 @@
             <div>
                 <div class="card-title">GTA V: FREE MK2 WEAPONS</div>
                 <div class="card-subtitle">PS5 Only</div>
-                <p style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 15px;">Grab special weapons & ammo in job, quit via phone, and keep everything in freemode session.</p>
+                <p style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 15px; line-height: 1.4;">Grab special weapons & ammo in job, quit via phone, and keep everything in freemode session.</p>
             </div>
             <a href="https://socialclub.rockstargames.com" target="_blank" class="btn-action">Bookmark Job (Social Club) ↗</a>
         </div>
@@ -240,20 +239,20 @@
             <div>
                 <div class="card-title">Rockstar Server Status</div>
                 <div class="card-subtitle" style="color: var(--text-muted);">Live Network Status</div>
-                <div style="font-size: 0.8rem; margin-top: 10px;">
-                    <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
-                        <span>GTA V Online</span>
-                        <span style="color: var(--accent-green);">● OPERATIONAL</span>
+                <div style="font-size: 0.75rem; margin-top: 10px;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                        <span style="color: var(--text-muted);">GTA V Online</span>
+                        <span style="color: var(--accent-cyan);">● OPERATIONAL</span>
                     </div>
                     <div style="display: flex; justify-content: space-between;">
-                        <span>Red Dead Online</span>
-                        <span style="color: var(--accent-green);">● OPERATIONAL</span>
+                        <span style="color: var(--text-muted);">Red Dead Online</span>
+                        <span style="color: var(--accent-cyan);">● OPERATIONAL</span>
                     </div>
                 </div>
             </div>
-            <div style="font-size: 0.7rem; color: var(--text-muted); display: flex; justify-content: space-between; margin-top: 15px;">
+            <div style="font-size: 0.65rem; color: var(--text-muted); display: flex; justify-content: space-between; margin-top: 15px; border-top: 1px solid var(--border-color); padding-top: 8px;">
                 <span>Services & Matchmaking</span>
-                <span style="color: var(--accent-green);">All Systems Normal</span>
+                <span style="color: var(--accent-cyan);">Normal</span>
             </div>
         </div>
 
@@ -262,7 +261,7 @@
             <div>
                 <div class="card-title">GTA V Glitches & Exploits</div>
                 <div class="card-subtitle">Se7enSins Community</div>
-                <p style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 15px;">Direct access to working dupes, solo glitches, outfit cheats, and daily updated GTA Online exploits.</p>
+                <p style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 15px; line-height: 1.4;">Direct access to working dupes, solo glitches, outfit cheats, and daily updated GTA Online exploits.</p>
             </div>
             <a href="https://www.se7ensins.com/forums/forums/grand-theft-auto-v-glitches.432/" target="_blank" class="btn-action">Open Forum (Se7enSins) ↗</a>
         </div>
@@ -272,14 +271,14 @@
             <div>
                 <div class="card-title">JSON Utility & XML Tools</div>
                 <div class="card-subtitle" style="color: var(--text-muted);">Editor & Converter</div>
-                <textarea style="width: 100%; height: 60px; background: var(--bg-card-inner); border: 1px solid var(--border-color); color: #fff; padding: 6px; font-size: 0.7rem; border-radius: 4px; resize: none; margin-bottom: 8px;" placeholder='{"key": "value"}'></textarea>
-                <div style="display: flex; gap: 4px; margin-bottom: 6px;">
-                    <button style="flex: 1; background: var(--bg-card-inner); border: 1px solid var(--border-color); color: #fff; padding: 4px; font-size: 0.65rem; border-radius: 4px;">Process</button>
-                    <button style="flex: 1; background: var(--bg-card-inner); border: 1px solid var(--border-color); color: #fff; padding: 4px; font-size: 0.65rem; border-radius: 4px;">Copy</button>
-                    <button style="flex: 1; background: var(--bg-card-inner); border: 1px solid var(--border-color); color: #fff; padding: 4px; font-size: 0.65rem; border-radius: 4px;">Clear</button>
+                <textarea style="width: 100%; height: 50px; background: var(--bg-card-inner); border: 1px solid var(--border-color); color: #fff; padding: 6px; font-size: 0.7rem; border-radius: 4px; resize: none; margin-bottom: 8px;" placeholder='{"key": "value"}'></textarea>
+                <div style="display: flex; gap: 4px; margin-bottom: 4px;">
+                    <button style="flex: 1; background: var(--bg-card-inner); border: 1px solid var(--border-color); color: #fff; padding: 4px; font-size: 0.65rem; border-radius: 4px; cursor: pointer;">Process</button>
+                    <button style="flex: 1; background: var(--bg-card-inner); border: 1px solid var(--border-color); color: #fff; padding: 4px; font-size: 0.65rem; border-radius: 4px; cursor: pointer;">Copy</button>
+                    <button style="flex: 1; background: var(--bg-card-inner); border: 1px solid var(--border-color); color: #fff; padding: 4px; font-size: 0.65rem; border-radius: 4px; cursor: pointer;">Clear</button>
                 </div>
             </div>
-            <div style="font-size: 0.65rem; color: var(--accent-green);">Ready</div>
+            <div style="font-size: 0.65rem; color: var(--accent-cyan);">Ready</div>
         </div>
 
         <!-- CARD 5: GTA VI Countdown -->
@@ -303,10 +302,10 @@
                 <div class="card-title">Quick Command Links</div>
                 <div class="card-subtitle" style="color: var(--text-muted);">Direct access to platforms</div>
                 <div class="quick-links-grid" style="margin-top: 15px;">
-                    <a href="https://www.trading212.com" target="_blank" class="btn-action" style="color: #fff;">Trading 212</a>
-                    <a href="https://www.kraken.com" target="_blank" class="btn-action" style="color: #fff;">Kraken Pro</a>
-                    <a href="https://phantom.app" target="_blank" class="btn-action" style="color: #fff;">Phantom</a>
-                    <a href="https://github.com" target="_blank" class="btn-action" style="color: #fff;">GitHub</a>
+                    <a href="https://www.trading212.com" target="_blank" class="btn-action" style="color: #fff; text-align: center;">Trading 212</a>
+                    <a href="https://www.kraken.com" target="_blank" class="btn-action" style="color: #fff; text-align: center;">Kraken Pro</a>
+                    <a href="https://phantom.app" target="_blank" class="btn-action" style="color: #fff; text-align: center;">Phantom</a>
+                    <a href="https://github.com" target="_blank" class="btn-action" style="color: #fff; text-align: center;">GitHub</a>
                 </div>
             </div>
         </div>
@@ -316,10 +315,10 @@
     <!-- BANNER: Follow @AstraN9ne99 on X -->
     <div class="banner-card">
         <div>
-            <div style="font-weight: bold; font-size: 0.9rem;">𝕏 Follow @AstraN9ne99 on X</div>
+            <div style="font-weight: bold; font-size: 0.85rem;">𝕏 Follow @AstraN9ne99 on X</div>
             <div style="font-size: 0.75rem; color: var(--text-muted);">Stay connected with the network.</div>
         </div>
-        <a href="https://x.com/AstraN9ne99" target="_blank" style="background: #fff; color: #000; padding: 8px 16px; border-radius: 6px; font-weight: bold; text-decoration: none; font-size: 0.8rem;">Follow @AstraN9ne99 ↗</a>
+        <a href="https://x.com/AstraN9ne99" target="_blank" style="background: #fff; color: #000; padding: 8px 16px; border-radius: 6px; font-weight: bold; text-decoration: none; font-size: 0.75rem;">Follow @AstraN9ne99 ↗</a>
     </div>
 
 </body>
